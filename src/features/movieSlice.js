@@ -19,4 +19,4 @@ export const { setMovie, resetMovie } = movieSlice.actions;
 
 export const selectMovie = (state) => state.movie.movie;
 
-export default mailSlice.reducer;
+export default movieSlice.reducer;
