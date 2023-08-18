@@ -1,0 +1,16 @@
+.detail{
+    display: flex;
+    padding: 10px 30px;
+    align-items: flex-start;
+}
+
+.detail > img{
+    flex:0.3;
+    object-fit: contain;
+    height: 250px; 
+    margin-right: 20px;
+    border: #4b4b4b 1px solid;
+    border-radius: 5px;
+}
+
+
