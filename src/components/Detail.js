@@ -12,6 +12,15 @@ const Detail = () => {
   const [year, setYear] = useState("");
   const [runtime, setRuntime] = useState(null);
 
+  const formatRuntime = (minutes) => {
+    const hours = Math.floor(minutes / 60);
+    const remainingMinutes = minutes % 60;
+
+    const formattedHours = String(hours).padStart(2, 0);
+    const formattedMinutes = String(remainingMinutes).padStart(2, "0");
+    return `${formattedHours}:${formattedMinutes}`;
+  };
+
   useEffect(() => {
     const fetchCrew = async () => {
       const request = await axios.get(
@@ -30,7 +39,7 @@ const Detail = () => {
         `movie/615656?api_key=07a0dc8d0120d7caaab7c92f067e365a`
       );
       setYear(request.data.release_date.substr(0, 4));
-      console.log(parseFloat(request.data.runtime));
+      setRuntime(parseFloat(request.data.runtime));
     };
 
     fetchCrew();
@@ -44,15 +53,19 @@ const Detail = () => {
         alt=""
       />
       <div className="detail__infoContainer">
-        <h3>Movie Title</h3>
-        <p>{`${year} | 2h45M | ${director}`}</p>
-        <p>
+        <p className="detail__movieTitle">
+          Movie Title <span>(Rating)</span>
+        </p>
+        <p className="detail__movieFacts">{`${year} | ${formatRuntime(
+          runtime
+        )} | ${director}`}</p>
+        <p className="detail__cast">
           Cast:{" "}
           {cast.map((actor) => (
             <span key={actor.id}>{actor?.name + ", "}</span>
           ))}
         </p>
-        <p>
+        <p className="detail__description">
           Description:{" "}
           <span>
             A life of an ordinary Parisian teenager Marinette goes superhuman
