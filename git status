@@ -1,0 +1,23 @@
+[33mcommit a0be41d1555e15104f5216e3264ab017e7eb3ed2[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m)[m
+Author: Pranav <pranavnarang1997@gmail.com>
+Date:   Fri Aug 18 11:11:54 2023 +0530
+
+    Header component css
+
+[33mcommit 11d397037ffd5021092058871cb00da9bf3041e0[m
+Author: Pranav <pranavnarang1997@gmail.com>
+Date:   Fri Aug 18 11:11:14 2023 +0530
+
+    Header component
+
+[33mcommit 96438b9771adcc3855a2c9e1e6e3d4f2dfbda12d[m
+Author: Pranav <pranavnarang1997@gmail.com>
+Date:   Fri Aug 18 11:06:46 2023 +0530
+
+    Firebase app config
+
+[33mcommit e74e6b6c36a79ccf931bd0ac34f897f3cb56ca79[m
+Author: Pranav <pranavnarang1997@gmail.com>
+Date:   Fri Aug 18 11:05:02 2023 +0530
+
+    Axios and TMDB Setup
