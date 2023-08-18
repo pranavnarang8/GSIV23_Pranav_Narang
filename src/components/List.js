@@ -12,7 +12,15 @@ const List = ({ fetchUrl }) => {
   useEffect(() => {
     const fetchData = async () => {
       const request = await axios.get(fetchUrl);
-      setMovies(request.data.results);
+      const dataArray = request.data.results;
+
+      dataArray.sort((a, b) => {
+        const dateA = new Date(a.release_date);
+        const dateB = new Date(b.release_date);
+        return dateB - dateA;
+      });
+
+      setMovies(dataArray);
       return request;
     };
 
