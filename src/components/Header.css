@@ -1,0 +1,31 @@
+.header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 30px;
+    border-bottom: 2px solid #4a4a4a;
+}
+
+.header__search{
+    display: flex;
+    align-items: center;
+    background-color: #DFDFDF;
+    flex:0.35;
+    border-radius: 5px;
+}
+
+.header__search > input{
+    border: none;
+    outline: none;
+    background-color: #DFDFDF;
+    padding-right: 10px;
+}
+
+.header__searchIcon, .header__homeIcon{
+    color: #4a4a4a;
+}
+
+.header__searchIcon{
+    padding-left: 10px;
+    padding-right: 10px;
+}
