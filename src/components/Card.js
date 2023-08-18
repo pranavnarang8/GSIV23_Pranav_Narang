@@ -1,9 +1,12 @@
 import React from "react";
 import "./Card.css";
 
-const Card = ({ image, title, rating, description }) => {
+const Card = ({ image, title, rating, description, id }) => {
+  const getMovie = () => {
+    console.log(id);
+  };
   return (
-    <div className="card">
+    <div className="card" onClick={getMovie}>
       <img src={image} alt="" />
       <div className="card__movieHeader">
         <p>{title}</p>

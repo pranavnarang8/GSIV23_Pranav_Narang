@@ -19,7 +19,6 @@ const List = ({ fetchUrl }) => {
     fetchData();
   }, [fetchUrl]);
 
-  console.log(movies);
   return (
     <div className="list">
       <div className="list__cardContainer">
@@ -29,6 +28,8 @@ const List = ({ fetchUrl }) => {
             title={movie.original_title}
             rating={movie.vote_average}
             description={movie.overview}
+            key={movie.id}
+            id={movie.id}
           />
         ))}
       </div>
