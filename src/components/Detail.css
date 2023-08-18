@@ -8,9 +8,40 @@
     flex:0.3;
     object-fit: contain;
     height: 250px; 
-    margin-right: 20px;
+    margin-right: 30px;
     border: #4b4b4b 1px solid;
     border-radius: 5px;
 }
 
+.detail__infoContainer{
+    color:#4b4b4b;
+    display: flex;
+    flex-direction: column;
+}
 
+.detail__movieTitle{
+    font-size: 18px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.detail__movieTitle > span {
+    color:#9b9b9b;
+    font-size: 14px;
+    margin-left: 15px;
+    font-weight: 500;
+}
+
+.detail__movieFacts, .detail__cast{
+    margin-bottom: 2px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.detail__description{
+    font-size: 14px;
+    font-weight: 500;
+    margin-top: 5px;
+}
