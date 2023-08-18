@@ -3,9 +3,11 @@ import "./List.css";
 import axios from "../axios";
 import { useState } from "react";
 import { useEffect } from "react";
+import Card from "./Card";
 
 const List = ({ fetchUrl }) => {
   const [movies, setMovies] = useState([]);
+  const base_url = "https://image.tmdb.org/t/p/original/";
 
   useEffect(() => {
     const fetchData = async () => {
@@ -18,7 +20,20 @@ const List = ({ fetchUrl }) => {
   }, [fetchUrl]);
 
   console.log(movies);
-  return <div className="list">This is a List</div>;
+  return (
+    <div className="list">
+      <div className="list__cardContainer">
+        {movies.map((movie) => (
+          <Card
+            image={`${base_url}${movie.backdrop_path}`}
+            title={movie.original_title}
+            rating={movie.vote_average}
+            description={movie.overview}
+          />
+        ))}
+      </div>
+    </div>
+  );
 };
 
 export default List;

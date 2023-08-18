@@ -1,0 +1,10 @@
+.list{
+    display: flex;
+}
+
+.list__cardContainer{
+    padding: 20px 30px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}

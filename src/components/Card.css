@@ -1,0 +1,42 @@
+.card{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 220px;
+    border: 1px solid #9b9b9b;
+    margin-bottom: 25px;
+    cursor: pointer;
+    border-radius: 5px;
+    
+}
+
+.card > img{
+    object-fit: contain;
+    width: 220px;
+
+}
+
+.card__movieHeader{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px 10px;
+    width: 200px;
+}
+
+
+
+.card__movieHeader > p{
+    /* margin-left: 10px;
+    margin-right: 10px; */
+    font-size: 12px;
+}
+
+.card__movieDesc{
+    padding: 5px 10px;
+    font-size: 12px;
+    height: 30px;
+    overflow: hidden;
+    text-overflow: ellipsis ;
+}
+
