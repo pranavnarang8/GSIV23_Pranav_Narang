@@ -3,7 +3,18 @@
 }
 
 .list__cardContainer{
+    /* padding: 20px 30px;
+    flex: 1;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between; */
+    display: flex;
+
+}
+
+.list__cardChildContainer{
     padding: 20px 30px;
+    flex: 1;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;

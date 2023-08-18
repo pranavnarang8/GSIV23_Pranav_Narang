@@ -5,11 +5,15 @@ import { useState } from "react";
 import { useEffect } from "react";
 import Card from "./Card";
 import InfiniteScroll from "react-infinite-scroll-component";
+import { useSelector } from "react-redux";
+import { selectFilter } from "../features/movieSlice";
 
 const List = ({ fetchUrl }) => {
   const [movies, setMovies] = useState([]);
   const [page, setPage] = useState(2);
   const base_url = "https://image.tmdb.org/t/p/original/";
+  const filterQuery = useSelector(selectFilter);
+  console.log(filterQuery);
 
   const fetchMoreMovies = async () => {
     const request = await axios.get(`${fetchUrl}&page=${page}`);
@@ -37,12 +41,21 @@ const List = ({ fetchUrl }) => {
         return dateB - dateA;
       });
 
-      setMovies(dataArray);
+      if (!filterQuery) {
+        setMovies(dataArray);
+      } else {
+        console.log(filterQuery.toLowerCase());
+        const filterArray = dataArray.filter((movie) =>
+          movie.title.toLowerCase().includes(filterQuery.toLowerCase())
+        );
+        setMovies(filterArray);
+      }
+
       return request;
     };
 
     fetchData();
-  }, [fetchUrl]);
+  }, [filterQuery]);
 
   return (
     <div className="list">
@@ -52,19 +65,21 @@ const List = ({ fetchUrl }) => {
         hasMore={page !== 24}
       >
         <div className="list__cardContainer">
-          {movies.map(
-            (movie) =>
-              movie.backdrop_path && (
-                <Card
-                  image={`${base_url}${movie.backdrop_path}`}
-                  title={movie.title}
-                  rating={movie.vote_average}
-                  description={movie.overview}
-                  key={movie.id}
-                  id={movie.id}
-                />
-              )
-          )}
+          <div className="list__cardChildContainer">
+            {movies.map(
+              (movie) =>
+                movie.backdrop_path && (
+                  <Card
+                    image={`${base_url}${movie.backdrop_path}`}
+                    title={movie.title}
+                    rating={movie.vote_average}
+                    description={movie.overview}
+                    key={movie.id}
+                    id={movie.id}
+                  />
+                )
+            )}
+          </div>
         </div>
       </InfiniteScroll>
     </div>

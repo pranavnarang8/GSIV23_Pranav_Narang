@@ -4,21 +4,33 @@
     justify-content: space-between;
     padding: 10px 30px;
     border-bottom: 2px solid #4a4a4a;
+    position: sticky;
+    top:0;
+    z-index: 5;
+    background-color: #fff;
 }
 
-.header__search{
+
+
+.header__search > form{
     display: flex;
     align-items: center;
     background-color: #DFDFDF;
     flex:0.35;
     border-radius: 5px;
+    padding: 4px 0px;
 }
 
-.header__search > input{
+.header__search > form > input{
     border: none;
     outline: none;
     background-color: #DFDFDF;
     padding-right: 10px;
+    
+}
+
+.header__search > form > button{
+    display: none;
 }
 
 .header__searchIcon, .header__homeIcon{
