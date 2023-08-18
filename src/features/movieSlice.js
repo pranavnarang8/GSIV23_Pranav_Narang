@@ -4,6 +4,8 @@ export const movieSlice = createSlice({
   name: "movie",
   initialState: {
     movie: null,
+    filter: null,
+    list: null,
   },
   reducers: {
     setMovie: (state, action) => {
@@ -12,11 +14,19 @@ export const movieSlice = createSlice({
     resetMovie: (state) => {
       state.movie = null;
     },
+    setFilter: (state, action) => {
+      state.filter = action.payload;
+    },
+    resetFilter: (state) => {
+      state.filter = null;
+    },
   },
 });
 
-export const { setMovie, resetMovie } = movieSlice.actions;
+export const { setMovie, resetMovie, setFilter, resetFilter } =
+  movieSlice.actions;
 
 export const selectMovie = (state) => state.movie.movie;
+export const selectFilter = (state) => state.movie.filter;
 
 export default movieSlice.reducer;
