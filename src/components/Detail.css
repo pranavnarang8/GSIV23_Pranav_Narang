@@ -5,7 +5,6 @@
 }
 
 .detail > img{
-    flex:0.3;
     object-fit: contain;
     height: 200px; 
     margin-right: 30px;
@@ -44,4 +43,16 @@
     font-size: 14px;
     font-weight: 500;
     margin-top: 5px;
+}
+
+@media all and (max-width:780px) and (min-width:660px){
+   .detail > img{
+    height: 140px;
+   }
+}
+
+@media all and (max-width:660px){
+    .detail>img {
+        height: 80px;
+    }
 }

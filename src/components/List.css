@@ -19,3 +19,12 @@
     flex-wrap: wrap;
     justify-content: space-between;
 }
+
+@media all and (max-width:550px) {
+    .list__cardChildContainer{
+        display: flex;
+        margin-left: auto;
+        margin-right: auto;
+        justify-content: center;
+    }
+}
