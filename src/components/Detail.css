@@ -6,7 +6,8 @@
 
 .detail > img{
     object-fit: contain;
-    height: 200px; 
+    /* height: 200px;  */
+    width:40%;
     margin-right: 30px;
     border: #4b4b4b 1px solid;
     border-radius: 5px;
@@ -45,14 +46,44 @@
     margin-top: 5px;
 }
 
-@media all and (max-width:780px) and (min-width:660px){
-   .detail > img{
+@media all and (max-width:940px) and (min-width:660px){
+   /* .detail > img{
     height: 140px;
+   } */
+
+   .detail__movieTitle{
+    font-size: 14px;
+    margin-bottom: 6px;
+   }
+
+   .detail__movieTitle > span{
+    font-size: 11px;
+   }
+
+   .detail__movieFacts, .detail__cast, .detail__description{
+    font-size: 11px;
+   }
+
+   .detail__description{
+    margin-top: 3px;
    }
 }
 
 @media all and (max-width:660px){
-    .detail>img {
+    /* .detail>img {
         height: 80px;
-    }
+    } */
+    .detail__movieTitle{
+        font-size: 12px;
+        margin-bottom: 6px;
+       }
+    
+       .detail__movieTitle > span{
+        font-size: 9px;
+       }
+    
+       .detail__movieFacts, .detail__cast, .detail__description{
+        font-size: 9px;
+        margin-top: 3px;
+       }
 }

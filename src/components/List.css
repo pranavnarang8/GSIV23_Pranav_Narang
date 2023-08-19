@@ -20,7 +20,7 @@
     justify-content: space-between;
 }
 
-@media all and (max-width:550px) {
+@media all and (max-width:580px) {
     .list__cardChildContainer{
         display: flex;
         margin-left: auto;
