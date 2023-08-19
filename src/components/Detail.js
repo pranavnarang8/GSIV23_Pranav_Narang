@@ -24,7 +24,7 @@ const Detail = () => {
   useEffect(() => {
     const fetchCrew = async () => {
       const request = await axios.get(
-        `movie/615656/credits?api_key=07a0dc8d0120d7caaab7c92f067e365a`
+        `movie/${movie?.id}/credits?api_key=07a0dc8d0120d7caaab7c92f067e365a`
       );
       setCast(request.data.cast.splice(0, 3));
       const newArr = request.data.crew.filter(
@@ -36,7 +36,7 @@ const Detail = () => {
 
     const fetchMovie = async () => {
       const request = await axios.get(
-        `movie/615656?api_key=07a0dc8d0120d7caaab7c92f067e365a`
+        `movie/${movie?.id}?api_key=07a0dc8d0120d7caaab7c92f067e365a`
       );
       setYear(request.data.release_date.substr(0, 4));
       setRuntime(parseFloat(request.data.runtime));
@@ -48,13 +48,15 @@ const Detail = () => {
 
   return (
     <div className="detail">
-      <img
-        src="https://image.tmdb.org/t/p/original/4m1Au3YkjqsxF8iwQy0fPYSxE0h.jpg"
-        alt=""
-      />
+      <img src={movie?.image} alt={movie?.title} />
       <div className="detail__infoContainer">
         <p className="detail__movieTitle">
-          Movie Title <span>(Rating)</span>
+          {movie?.title}{" "}
+          {movie?.rating === 0 ? (
+            <span>Coming Soon</span>
+          ) : (
+            <span>{`IMDB ${movie?.rating}/10`}</span>
+          )}
         </p>
         <p className="detail__movieFacts">{`${year} | ${formatRuntime(
           runtime
@@ -66,13 +68,7 @@ const Detail = () => {
           ))}
         </p>
         <p className="detail__description">
-          Description:{" "}
-          <span>
-            A life of an ordinary Parisian teenager Marinette goes superhuman
-            when she becomes Ladybug. Bestowed with magical powers of creation,
-            Ladybug must unite with her opposite, Cat Noir, to save Paris as a
-            new villain unleashes chaos unto the city.
-          </span>
+          Description: <span>{movie?.description}</span>
         </p>
       </div>
     </div>
