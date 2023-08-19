@@ -33,7 +33,7 @@
     display: none;
 }
 
-.header__searchIcon, .header__homeIcon{
+.header__searchIcon, .header__homeIcon, .header__arrowBackIcon{
     color: #4a4a4a;
 }
 
@@ -41,3 +41,4 @@
     padding-left: 10px;
     padding-right: 10px;
 }
+
