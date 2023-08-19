@@ -21,9 +21,13 @@ const Card = ({ image, title, rating, description, id }) => {
       <img src={image} alt="" />
       <div className="card__movieHeader">
         <p className="card__title">{title}</p>
-        <p className="card__rating">
-          IMDB <span>{rating}</span>/10
-        </p>
+        {rating === 0 ? (
+          <p className="card__rating">Coming Soon</p>
+        ) : (
+          <p className="card__rating">
+            IMDB <span>{rating}</span>/10
+          </p>
+        )}
       </div>
       <div className="card__movieDesc">
         <p>{description}</p>

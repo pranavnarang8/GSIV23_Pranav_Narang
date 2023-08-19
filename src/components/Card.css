@@ -39,11 +39,15 @@
 }
 
 .card__movieDesc{
-    padding: 5px 10px;
+    padding: 6px 10px;
     font-size: 12px;
     height: 30px;
     overflow: hidden;
     text-overflow: ellipsis ;
+}
+
+.card__movieDesc > p{
+    height: max-content;
 }
 
 .card:hover{
