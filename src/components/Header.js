@@ -4,12 +4,18 @@ import SearchIcon from "@mui/icons-material/Search";
 import HomeIcon from "@mui/icons-material/Home";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { resetFilter, selectMovie, setFilter } from "../features/movieSlice";
+import {
+  disableHasMore,
+  enableHasMore,
+  resetFilter,
+  selectMovie,
+  setFilter,
+} from "../features/movieSlice";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { resetMovie } from "../features/movieSlice";
 import { useHistory } from "react-router-dom";
 
-const Header = () => {
+const Header = ({ backArrowIcon }) => {
   const [input, setInput] = useState();
   const dispatch = useDispatch();
   const movie = useSelector(selectMovie);
@@ -18,20 +24,22 @@ const Header = () => {
   const handleSearch = (e) => {
     e.preventDefault();
     dispatch(setFilter(input));
+    dispatch(disableHasMore());
     if (input === "") {
-      dispatch(resetFilter);
+      dispatch(resetFilter());
+      dispatch(enableHasMore());
     }
   };
 
   const handleNavBack = (e) => {
     e.preventDefault();
-    dispatch(resetMovie);
+    dispatch(resetMovie());
     history.push("/");
   };
   return (
     <div className="header">
       <div className="header__search">
-        {movie ? (
+        {backArrowIcon ? (
           <ArrowBackIcon
             className="header__arrowBackIcon"
             onClick={handleNavBack}
@@ -49,7 +57,7 @@ const Header = () => {
           </form>
         )}
       </div>
-      <HomeIcon className="header__homeIcon" />
+      <HomeIcon className="header__homeIcon" onClick={handleNavBack} />
     </div>
   );
 };

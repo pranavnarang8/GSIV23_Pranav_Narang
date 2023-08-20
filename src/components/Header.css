@@ -35,6 +35,7 @@
 
 .header__searchIcon, .header__homeIcon, .header__arrowBackIcon{
     color: #4a4a4a;
+    cursor: pointer;
 }
 
 .header__searchIcon{
