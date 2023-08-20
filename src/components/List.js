@@ -47,7 +47,6 @@ const List = ({ fetchUpcoming, fetchSearch }) => {
           return dateB - dateA;
         });
 
-        console.log(movies);
         setMovies(dataArray);
         return request;
       } else {
@@ -60,7 +59,6 @@ const List = ({ fetchUpcoming, fetchSearch }) => {
           return dateB - dateA;
         });
 
-        console.log(movies);
         setMovies(dataArray);
         return request;
       }

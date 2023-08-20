@@ -12,7 +12,6 @@ import { useHistory } from "react-router-dom";
 const Header = ({ backArrowIcon }) => {
   const [input, setInput] = useState();
   const dispatch = useDispatch();
-  const movie = useSelector(selectMovie);
   const history = useHistory();
 
   const handleSearch = (e) => {

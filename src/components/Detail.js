@@ -55,7 +55,7 @@ const Detail = () => {
           {movie?.rating === 0 ? (
             <span>Coming Soon</span>
           ) : (
-            <span>{`IMDB ${movie?.rating}/10`}</span>
+            <span>{`IMDB ${movie?.rating.toFixed(1)}/10`}</span>
           )}
         </p>
         <p className="detail__movieFacts">{`${year} | ${formatRuntime(

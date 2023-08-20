@@ -32,7 +32,7 @@ const Card = ({ image, title, rating, description, id }) => {
           <p className="card__rating">Coming Soon</p>
         ) : (
           <p className="card__rating">
-            IMDB <span>{rating}</span>/10
+            IMDB <span>{rating.toFixed(1)}</span>/10
           </p>
         )}
       </div>
