@@ -13,10 +13,13 @@ function App() {
         <Switch>
           <Route exact path="/">
             <Header />
-            <List fetchUrl={requests.fetchUpcoming} />
+            <List
+              fetchUpcoming={requests.fetchUpcoming}
+              fetchSearch={requests.fetchSearch}
+            />
           </Route>
           <Route exact path="/detail">
-            <Header />
+            <Header backArrowIcon />
             <Detail />
           </Route>
         </Switch>

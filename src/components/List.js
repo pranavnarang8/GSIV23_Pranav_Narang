@@ -6,33 +6,19 @@ import { useEffect } from "react";
 import Card from "./Card";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { useSelector } from "react-redux";
-import { selectFilter } from "../features/movieSlice";
+import { selectFilter, selectHasMore } from "../features/movieSlice";
 
-const List = ({ fetchUrl }) => {
+const List = ({ fetchUpcoming, fetchSearch }) => {
   const [movies, setMovies] = useState([]);
   const [page, setPage] = useState(2);
+
   const base_url = "https://image.tmdb.org/t/p/original/";
   const filterQuery = useSelector(selectFilter);
-  console.log(filterQuery);
+  // const hasMore = useSelector(selectHasMore);
 
   const fetchMoreMovies = async () => {
-    const request = await axios.get(`${fetchUrl}&page=${page}`);
-    const dataArray = request.data.results;
-
-    dataArray.sort((a, b) => {
-      const dateA = new Date(a.release_date);
-      const dateB = new Date(b.release_date);
-      return dateB - dateA;
-    });
-
-    setMovies([...movies, ...dataArray]);
-    setPage(page + 1);
-    return request;
-  };
-
-  useEffect(() => {
-    const fetchData = async () => {
-      const request = await axios.get(fetchUrl);
+    if (!filterQuery) {
+      const request = await axios.get(`${fetchUpcoming}&page=${page}`);
       const dataArray = request.data.results;
 
       dataArray.sort((a, b) => {
@@ -41,28 +27,74 @@ const List = ({ fetchUrl }) => {
         return dateB - dateA;
       });
 
+      setMovies([...movies, ...dataArray]);
+
+      setPage(page + 1);
+      return request;
+    } else {
+      return;
+    }
+
+    // if (!filterQuery) {
+    //   setMovies([...movies, ...dataArray]);
+    // } else {
+    //   const filterArray = dataArray.filter((movie) =>
+    //     movie.title.toLowerCase().includes(filterQuery.toLowerCase())
+    //   );
+    //   setMovies([...movies, ...filterArray]);
+    // }
+  };
+
+  useEffect(() => {
+    const fetchData = async () => {
       if (!filterQuery) {
+        const request = await axios.get(fetchUpcoming);
+        const dataArray = request.data.results;
+
+        dataArray.sort((a, b) => {
+          const dateA = new Date(a.release_date);
+          const dateB = new Date(b.release_date);
+          return dateB - dateA;
+        });
+
+        console.log(movies);
         setMovies(dataArray);
+        return request;
       } else {
-        console.log(filterQuery.toLowerCase());
-        const filterArray = dataArray.filter((movie) =>
-          movie.title.toLowerCase().includes(filterQuery.toLowerCase())
-        );
-        setMovies(filterArray);
+        const request = await axios.get(`${fetchSearch}${filterQuery}`);
+        const dataArray = request.data.results;
+
+        dataArray.sort((a, b) => {
+          const dateA = new Date(a.release_date);
+          const dateB = new Date(b.release_date);
+          return dateB - dateA;
+        });
+
+        console.log(movies);
+        setMovies(dataArray);
+        return request;
       }
 
-      return request;
+      // if (!filterQuery) {
+      //   setMovies(dataArray);
+      // } else {
+      //   const filterArray = dataArray.filter((movie) =>
+      //     movie.title.toLowerCase().includes(filterQuery.toLowerCase())
+      //   );
+      //   setMovies(filterArray);
+      // }
     };
 
     fetchData();
   }, [filterQuery]);
 
   return (
-    <div className="list">
+    <div className="list" style={{ width: "100%" }}>
       <InfiniteScroll
         dataLength={movies.length}
         next={fetchMoreMovies}
         hasMore={page !== 24}
+        // hasMore={hasMore}
       >
         <div className="list__cardContainer">
           <div className="list__cardChildContainer">

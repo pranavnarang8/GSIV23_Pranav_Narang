@@ -1,5 +1,6 @@
 .list{
     display: flex;
+    
 }
 
 .list__cardContainer{
@@ -9,15 +10,24 @@
     flex-wrap: wrap;
     justify-content: space-between; */
     display: flex;
-
+    width: 100%;
 }
+
+.infinite-scroll-component__outerdiv{
+    width: 100% !important;
+    /* flex: 1 !important;
+    display: flex !important; */
+}
+
+
 
 .list__cardChildContainer{
     padding: 20px 30px;
     flex: 1;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: space-around;
+    overflow-x: auto;
 }
 
 @media all and (max-width:580px) {
