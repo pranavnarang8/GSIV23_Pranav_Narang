@@ -1,22 +1,24 @@
 .list{
     display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+.list__loaderContainer{
+    display: flex;
+    align-items: center;
+    margin-top: 250px;
     
 }
 
 .list__cardContainer{
-    /* padding: 20px 30px;
-    flex: 1;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between; */
     display: flex;
     width: 100%;
 }
 
 .infinite-scroll-component__outerdiv{
     width: 100% !important;
-    /* flex: 1 !important;
-    display: flex !important; */
 }
 
 

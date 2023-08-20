@@ -7,10 +7,12 @@ import Card from "./Card";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { useSelector } from "react-redux";
 import { selectFilter } from "../features/movieSlice";
+import { ScaleLoader } from "react-spinners";
 
 const List = ({ fetchUpcoming, fetchSearch }) => {
   const [movies, setMovies] = useState([]);
   const [page, setPage] = useState(2);
+  const [loading, setLoading] = useState(false);
 
   const base_url = "https://image.tmdb.org/t/p/original/";
   const filterQuery = useSelector(selectFilter);
@@ -38,6 +40,7 @@ const List = ({ fetchUpcoming, fetchSearch }) => {
   useEffect(() => {
     const fetchData = async () => {
       if (!filterQuery) {
+        setLoading(true);
         const request = await axios.get(fetchUpcoming);
         const dataArray = request.data.results;
 
@@ -48,8 +51,10 @@ const List = ({ fetchUpcoming, fetchSearch }) => {
         });
 
         setMovies(dataArray);
+        setLoading(false);
         return request;
       } else {
+        setLoading(true);
         const request = await axios.get(`${fetchSearch}${filterQuery}`);
         const dataArray = request.data.results;
 
@@ -60,6 +65,7 @@ const List = ({ fetchUpcoming, fetchSearch }) => {
         });
 
         setMovies(dataArray);
+        setLoading(false);
         return request;
       }
     };
@@ -68,30 +74,36 @@ const List = ({ fetchUpcoming, fetchSearch }) => {
   }, [filterQuery]);
 
   return (
-    <div className="list" style={{ width: "100%" }}>
-      <InfiniteScroll
-        dataLength={movies.length}
-        next={fetchMoreMovies}
-        hasMore={page !== 24}
-      >
-        <div className="list__cardContainer">
-          <div className="list__cardChildContainer">
-            {movies.map(
-              (movie) =>
-                movie.backdrop_path && (
-                  <Card
-                    image={`${base_url}${movie.backdrop_path}`}
-                    title={movie.title}
-                    rating={movie.vote_average}
-                    description={movie.overview}
-                    key={movie.id}
-                    id={movie.id}
-                  />
-                )
-            )}
+    <div className="list">
+      {!loading ? (
+        <InfiniteScroll
+          dataLength={movies.length}
+          next={fetchMoreMovies}
+          hasMore={page !== 24}
+        >
+          <div className="list__cardContainer">
+            <div className="list__cardChildContainer">
+              {movies.map(
+                (movie) =>
+                  movie.backdrop_path && (
+                    <Card
+                      image={`${base_url}${movie.backdrop_path}`}
+                      title={movie.title}
+                      rating={movie.vote_average}
+                      description={movie.overview}
+                      key={movie.id}
+                      id={movie.id}
+                    />
+                  )
+              )}
+            </div>
           </div>
+        </InfiniteScroll>
+      ) : (
+        <div className="list__loaderContainer">
+          <ScaleLoader color="rgba(20, 22, 21, 1)" />
         </div>
-      </InfiniteScroll>
+      )}
     </div>
   );
 };
