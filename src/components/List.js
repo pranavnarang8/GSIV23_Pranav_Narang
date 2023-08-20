@@ -6,7 +6,7 @@ import { useEffect } from "react";
 import Card from "./Card";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { useSelector } from "react-redux";
-import { selectFilter, selectHasMore } from "../features/movieSlice";
+import { selectFilter } from "../features/movieSlice";
 
 const List = ({ fetchUpcoming, fetchSearch }) => {
   const [movies, setMovies] = useState([]);
@@ -14,7 +14,6 @@ const List = ({ fetchUpcoming, fetchSearch }) => {
 
   const base_url = "https://image.tmdb.org/t/p/original/";
   const filterQuery = useSelector(selectFilter);
-  // const hasMore = useSelector(selectHasMore);
 
   const fetchMoreMovies = async () => {
     if (!filterQuery) {
@@ -34,15 +33,6 @@ const List = ({ fetchUpcoming, fetchSearch }) => {
     } else {
       return;
     }
-
-    // if (!filterQuery) {
-    //   setMovies([...movies, ...dataArray]);
-    // } else {
-    //   const filterArray = dataArray.filter((movie) =>
-    //     movie.title.toLowerCase().includes(filterQuery.toLowerCase())
-    //   );
-    //   setMovies([...movies, ...filterArray]);
-    // }
   };
 
   useEffect(() => {
@@ -74,15 +64,6 @@ const List = ({ fetchUpcoming, fetchSearch }) => {
         setMovies(dataArray);
         return request;
       }
-
-      // if (!filterQuery) {
-      //   setMovies(dataArray);
-      // } else {
-      //   const filterArray = dataArray.filter((movie) =>
-      //     movie.title.toLowerCase().includes(filterQuery.toLowerCase())
-      //   );
-      //   setMovies(filterArray);
-      // }
     };
 
     fetchData();
@@ -94,7 +75,6 @@ const List = ({ fetchUpcoming, fetchSearch }) => {
         dataLength={movies.length}
         next={fetchMoreMovies}
         hasMore={page !== 24}
-        // hasMore={hasMore}
       >
         <div className="list__cardContainer">
           <div className="list__cardChildContainer">

@@ -5,7 +5,7 @@ export const movieSlice = createSlice({
   initialState: {
     movie: null,
     filter: null,
-    list: null,
+    hasMore: true,
   },
   reducers: {
     setMovie: (state, action) => {

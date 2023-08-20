@@ -4,13 +4,7 @@ import SearchIcon from "@mui/icons-material/Search";
 import HomeIcon from "@mui/icons-material/Home";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  disableHasMore,
-  enableHasMore,
-  resetFilter,
-  selectMovie,
-  setFilter,
-} from "../features/movieSlice";
+import { resetFilter, selectMovie, setFilter } from "../features/movieSlice";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { resetMovie } from "../features/movieSlice";
 import { useHistory } from "react-router-dom";
@@ -24,10 +18,8 @@ const Header = ({ backArrowIcon }) => {
   const handleSearch = (e) => {
     e.preventDefault();
     dispatch(setFilter(input));
-    dispatch(disableHasMore());
     if (input === "") {
       dispatch(resetFilter());
-      dispatch(enableHasMore());
     }
   };
 
