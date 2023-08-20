@@ -15,11 +15,10 @@
 .list__cardContainer{
     display: flex;
     width: 100%;
+    flex-direction: column;
 }
 
-.infinite-scroll-component__outerdiv{
-    width: 100% !important;
-}
+
 
 
 
