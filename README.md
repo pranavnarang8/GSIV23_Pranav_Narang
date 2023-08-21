@@ -1,46 +1,23 @@
-# Getting Started with Create React App and Redux
+//Instructions to use the App
+website URL for TMDB Movie Browser - https://movie-browser-3afb3.web.app/
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) template.
+1. Open the URL and a list of upcoming movies will load on your browser
+2. Users can search for movies by using the search bar in the Header
+3. Users can view Movie Details by clicking on the movie of their choice
+4. User can navigate back to the List page from the Details page by using arrow back button, home button or browser back button
 
-## Available Scripts
+//Listing elements from the challenge that I have done well
+1. Use of axios and requests.js file to improve scalability of the application.
+2. Use of redux to avoid prop drilling and thus improving efficiency
+3. Using react-spinners to render some UI while the API response is getting rendered on the screen
+4. Responsive UI by using flex box with subtle hover actions and color scheming
 
-In the project directory, you can run:
+//What I would do to improve my solution if I had 4 more hours
+1. I would like to take up the time to learn more about Jest as I wasn't able to get my test setups done in time.
+2. I would also like to take up more time to study the TMDB API as there is a lot of content on it's use on the internet and I am sure there are some very useful API endpoints that I could have used as well.
+3. Explore Remix.js as I have not worked with it yet
 
-### `npm start`
+//Feedback to improve the challenge
+1. Including a wider range of colors or letting candidates pick their own color combinations.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
