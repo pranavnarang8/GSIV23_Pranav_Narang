@@ -44,6 +44,8 @@ const Detail = () => {
 
     fetchCrew();
     fetchMovie();
+
+    // eslint-disable-next-line
   }, []);
 
   return (

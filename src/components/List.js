@@ -12,6 +12,7 @@ import { ScaleLoader } from "react-spinners";
 const List = ({ fetchUpcoming, fetchSearch }) => {
   const [movies, setMovies] = useState([]);
   const [page, setPage] = useState(2);
+  const [totalPages, setTotalPages] = useState();
   const [loading, setLoading] = useState(false);
 
   const base_url = "https://image.tmdb.org/t/p/original/";
@@ -43,6 +44,7 @@ const List = ({ fetchUpcoming, fetchSearch }) => {
         setLoading(true);
         const request = await axios.get(fetchUpcoming);
         const dataArray = request.data.results;
+        setTotalPages(request.data.total_pages);
 
         dataArray.sort((a, b) => {
           const dateA = new Date(a.release_date);
@@ -71,6 +73,7 @@ const List = ({ fetchUpcoming, fetchSearch }) => {
     };
 
     fetchData();
+    // eslint-disable-next-line
   }, [filterQuery]);
 
   return (
@@ -79,7 +82,7 @@ const List = ({ fetchUpcoming, fetchSearch }) => {
         <InfiniteScroll
           dataLength={movies.length}
           next={fetchMoreMovies}
-          hasMore={page !== 24}
+          hasMore={page !== totalPages}
           loader={
             !filterQuery && (
               <div className="list__loaderInfiniteScroll">
