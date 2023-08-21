@@ -5,8 +5,11 @@ import List from "./components/List";
 import requests from "./requests";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Detail from "./components/Detail";
+import { useSelector } from "react-redux";
+import { selectMovie } from "./features/movieSlice";
 
 function App() {
+  const movie = useSelector(selectMovie);
   return (
     <div className="app">
       <Router>
@@ -19,8 +22,15 @@ function App() {
             />
           </Route>
           <Route exact path="/detail">
-            <Header backArrowIcon />
-            <Detail />
+            {movie ? <Header backArrowIcon /> : <Header />}
+            {movie ? (
+              <Detail />
+            ) : (
+              <List
+                fetchUpcoming={requests.fetchUpcoming}
+                fetchSearch={requests.fetchSearch}
+              />
+            )}
           </Route>
         </Switch>
       </Router>
