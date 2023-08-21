@@ -80,6 +80,13 @@ const List = ({ fetchUpcoming, fetchSearch }) => {
           dataLength={movies.length}
           next={fetchMoreMovies}
           hasMore={page !== 24}
+          loader={
+            !filterQuery && (
+              <div className="list__loaderInfiniteScroll">
+                <ScaleLoader color="rgba(20, 22, 21, 1)" />
+              </div>
+            )
+          }
         >
           <div className="list__cardContainer">
             <div className="list__cardChildContainer">

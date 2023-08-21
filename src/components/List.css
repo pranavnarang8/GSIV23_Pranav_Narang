@@ -12,6 +12,12 @@
     
 }
 
+.list__loaderInfiniteScroll{
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+}
+
 .list__cardContainer{
     display: flex;
     width: 100%;
