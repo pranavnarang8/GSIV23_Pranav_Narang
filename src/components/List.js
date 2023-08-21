@@ -86,7 +86,7 @@ const List = ({ fetchUpcoming, fetchSearch }) => {
           loader={
             !filterQuery && (
               <div className="list__loaderInfiniteScroll">
-                <ScaleLoader color="rgba(20, 22, 21, 1)" />
+                <ScaleLoader color="#4a4a4a" />
               </div>
             )
           }
@@ -111,7 +111,7 @@ const List = ({ fetchUpcoming, fetchSearch }) => {
         </InfiniteScroll>
       ) : (
         <div className="list__loaderContainer">
-          <ScaleLoader color="rgba(20, 22, 21, 1)" />
+          <ScaleLoader color="#4a4a4a" />
         </div>
       )}
     </div>
