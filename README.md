@@ -14,7 +14,7 @@ website URL for TMDB Movie Browser - https://movie-browser-3afb3.web.app/
 
 //What I would do to improve my solution if I had 4 more hours
 1. I would like to take up the time to learn more about Jest as I wasn't able to get my test setups done in time.
-2. I would also like to take up more time to study the TMDB API as there is a lot of content on it's use on the internet and I am sure there are some very useful API endpoints that I could have used as well.
+2. I would also like to take up more time to study the TMDB API as there is a lot of content on it's use on the internet and I am sure there are some very useful API endpoints that I could have used to add some additional functionalities.
 3. Explore Remix.js as I have not worked with it yet
 
 //Feedback to improve the challenge
